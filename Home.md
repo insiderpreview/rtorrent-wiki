@@ -79,6 +79,7 @@ rTorrent and libTorrent packages are both available for the following operating 
  * [Crux](https://crux.nu/) : in the [Crux Ports DB](https://crux.nu/portdb/?command=viewport&name=libtorrent&repo=contrib); see latest version on [libTorrent](https://crux.nu/gitweb/?p=ports/contrib.git;a=tree;f=libtorrent) and [rTorrent](https://crux.nu/gitweb/?p=ports/contrib.git;a=tree;f=rtorrent).
  * [Lunar-Linux](http://www.lunar-linux.org/) : in the moonbase; to install just `lin rtorrent`
  * [Sourcemage GNU/Linux](http://sourcemage.org/) : do a `cast rtorrent` or `cast libtorrent`
+ * [NixOS/Nixpkgs](https://www.nixos.org/) : The latest packages are available in Nixpkgs tree, you can using it by doing `nix-shell -p rtorrent` to open a shell with `rtorrent` environment.
 
  * [FreeBSD](http://www.freebsd.org/) : in [FreshPorts](http://www.freshports.org/); see latest version on [libTorrent](http://www.freshports.org/net-p2p/libtorrent) and [rTorrent](http://www.freshports.org/net-p2p/rtorrent).
  * [NetBSD](http://www.netbsd.org/) : in [pkgsrc](http://www.pkgsrc.org/); `net/rtorrent`.
