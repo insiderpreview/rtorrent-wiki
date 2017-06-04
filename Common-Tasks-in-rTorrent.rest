@@ -210,6 +210,14 @@ Switch to a custom view with
    ui.current_view.set = viewname
 
 
+Manually setting the local IP
+--------------------
+
+Using the ``-i <ip>`` flag or ``ip = <ip>`` option, you may change your IP address that is reported to the tracker. If you have a dynamic IP address then ``schedule = ip_tick,0,1800,ip=my_address`` may be used to update the IP address every 30 minutes.
+
+The client may spend as much as 60 seconds trying to contact a UDP tracker, so if you are behind a firewall that blocks the reply packets you should tell the client to skip the UDP tracker. Set ``use_udp_trackers = no`` in your configuration file or in the command line option.
+
+
 Start or stop all torrents
 ------------
 
