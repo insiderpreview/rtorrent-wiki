@@ -41,13 +41,6 @@ These pages and the following sections cover information that you don't need whe
  * [Favoring one group of torrents over the rest of them](https://github.com/rakshasa/rtorrent/wiki/Favoring-group-of-torrents)
  * [[Auto-Scraping]]
 
-### Manually setting the local IP ###
-
-Using the ''-i <ip>'' flag or ''"ip = <ip>"'' option you may change your ip address that is reported to the tracker. If you have a dynamic ip address then ''"schedule = ip_tick,0,1800,ip=my_address"'' may be used to update the ip address every 30 minutes.
-
-The client may spend as much as 60 seconds trying to contact a UDP tracker, so if you are behind a firewall that blocks the reply packets you should tell the client to skip the UDP tracker. Set "use_udp_trackers = no" in your configuration file or in the command line option.
-
-
 ## Advanced Topics
 
  * [Logging](https://github.com/rakshasa/rtorrent/wiki/LOG-Logging)
