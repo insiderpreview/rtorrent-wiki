@@ -11,6 +11,8 @@
 
 See [rTorrent Configuration Template](https://github.com/rakshasa/rtorrent/wiki/CONFIG-Template) for a modern rTorrent configuration that provides a good starting point. The following sub-sections describe some of the essential settings you must have in a common configuration.
 
+Additionally, the [[Common Tasks in rTorrent]] page lists many useful things to have in a configuration, and also some tips regarding maintenance tasks.
+
 ### Using a Session Directory
 
 Adding the `session.path.set` command will enable session management, which means the torrent files and status information for all open downloads will be stored in this directory. When restarting rTorrent all torrents previously loaded will be restored. Only one instance of rTorrent should be used with each session directory, though at the moment no locking is done. An empty string will disable the session handling.
@@ -37,7 +39,7 @@ These pages and the following sections cover information that you don't need whe
  * [Using XMLRPC with rTorrent](https://github.com/rakshasa/rtorrent/wiki/RPC-Setup-XMLRPC)
  * [Performance Tuning](https://github.com/rakshasa/rtorrent/wiki/Performance-Tuning)
  * [Favoring one group of torrents over the rest of them](https://github.com/rakshasa/rtorrent/wiki/Favoring-group-of-torrents)
- * [Auto-Scraping](https://github.com/rakshasa/rtorrent/wiki/Auto-Scraping)
+ * [[Auto-Scraping]]
 
 ### Manually setting the local IP ###
 
@@ -50,7 +52,6 @@ The client may spend as much as 60 seconds trying to contact a UDP tracker, so i
 
  * [Logging](https://github.com/rakshasa/rtorrent/wiki/LOG-Logging)
  * [Migration to the 0.9.x command syntax](https://github.com/rakshasa/rtorrent/wiki/RPC-Migration-0.9)
- * [Common Tasks in rTorrent](https://github.com/rakshasa/rtorrent/wiki/Common-Tasks-in-rTorrent)
  * [Choke Groups](https://github.com/rakshasa/rtorrent/wiki/Choke-Groups)
  * [IP filtering](https://github.com/rakshasa/rtorrent/wiki/IP-filtering)
 
