@@ -130,7 +130,7 @@ schedule2 = watch_load, 11, 10, ((load.normal, (cat, (cfg.watch), "load/*.torren
 print = (cat, "Logging to ", (cfg.logfile))
 log.open_file = "log", (cfg.logfile)
 log.add_output = "info", "log"
-#log.add_output = "tracker_debug", "log"
+##log.add_output = "tracker_debug", "log"
 
 ### END of rtorrent.rc ###
 ```
