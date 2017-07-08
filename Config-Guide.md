@@ -43,13 +43,13 @@ These pages and the following sections cover information that you don't need whe
 
 ## Advanced Topics
 
- * [Logging](https://github.com/rakshasa/rtorrent/wiki/LOG-Logging)
+ * [[Logging|LOG-Logging]]
  * [Migration to the 0.9.x command syntax](https://github.com/rakshasa/rtorrent/wiki/RPC-Migration-0.9)
- * [Choke Groups](https://github.com/rakshasa/rtorrent/wiki/Choke-Groups)
- * [IP filtering](https://github.com/rakshasa/rtorrent/wiki/IP-filtering)
+ * [[Choke Groups]]
+ * [[IP filtering]]
 
 
-## Complete solutions
+## Complete Solutions
 
 * [pimp-my-box](https://github.com/pyroscope/pimp-my-box)
 * [Ultimate Torrent Setup](https://github.com/xombiemp/ultimate-torrent-setup/wiki)
