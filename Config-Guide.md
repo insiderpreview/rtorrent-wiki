@@ -9,7 +9,7 @@
 
 ## Basic Configuration 
 
-See [rTorrent Configuration Template](https://github.com/rakshasa/rtorrent/wiki/CONFIG-Template) for a modern rTorrent configuration that provides a good starting point. The following sub-sections describe some of the essential settings you must have in a common configuration.
+See [[rTorrent Configuration Template|CONFIG-Template]] for a modern rTorrent configuration that provides a good starting point. The following sub-sections describe some of the essential settings you must have in a common configuration like that, plus some advanced settings you can add, depending on what your needs are.
 
 Additionally, the [[Common Tasks in rTorrent]] page lists many useful things to have in a configuration, and also some tips regarding maintenance tasks.
 
