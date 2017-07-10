@@ -155,7 +155,7 @@ The main view window lists all loaded torrents with respective status info. Exam
 *
 ```
 
-###Torrent info line explanation###
+### Torrent info line explanation ###
 
 **Torrent:  161.6 /  617.2 MB**  
      Amount of downloaded data / total size of torrent.
@@ -193,7 +193,7 @@ Example of the status bar:
 Throttle U/D: 200/off  Rate: 141.6 /   0.0 KiB  Listen:<default>:xxxxx  Bind: xxx.xxx.xxx.xxx  [U 3/14] [D 15/0] [H 1/32] [S 6/40/768] [F 4/128]
 ```
 
-###Bottom line explanation###
+### Bottom line explanation ###
 
 **Throttle U/D: 200/off**  
 These are the current speed settings.  
@@ -244,7 +244,7 @@ Example entry:
 ```
 
 
-###Explanation###
+### Explanation ###
 
 **IP**  
      The IP address of the peer. (Which, of course, has nothing to do with DNS)
