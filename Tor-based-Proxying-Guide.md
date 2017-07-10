@@ -30,4 +30,3 @@ Instead of abusing Tor, here are some alternatives:
     (VPN)](https://en.wikipedia.org/wiki/Virtual_private_network) providers.
   * [Seedbox](https://en.wikipedia.org/wiki/Seedbox) providers.
 
-Only you can decide your fate.
