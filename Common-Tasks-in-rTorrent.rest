@@ -74,8 +74,6 @@ When the torrent finishes, it executes ``mv <base_path> ~/Download/`` and then s
 Move completed torrents to different directory depending on watch directory
 ------------
 
-**This is just broken, read** `#625 </rakshasa/rtorrent/issues/625>`_.
-
 Each watch directory adds torrents with the final destination stored in the ``custom1`` string of the download. You can check this string with ``^x`` then ``print=$d.custom1=`` in the client (using the above defined ``d.get_data_full_path`` method).
 
 .. code-block::
@@ -83,10 +81,9 @@ Each watch directory adds torrents with the final destination stored in the ``cu
    schedule2 = watch_directory_1,10,10,"load.start=~/Download/watch_stuff1/*.torrent,d.custom1.set=~/Download/stuff1/"
    schedule2 = watch_directory_2,10,10,"load.start=~/Download/watch_stuff2/*.torrent,d.custom1.set=~/Download/stuff2/"
    
-   # gets the full path of data of a torrent (it's a workaround for the possibly empty 'd.base_path' attribute)
    method.insert = d.get_data_full_path, simple, "branch=((d.is_multi_file)),((cat,(d.directory))),((cat,(d.directory),/,(d.name)))"
-   # On completion, move the torrent to the directory from custom1.
-   method.set_key =event.download.finished,move_complete,"d.directory.set=$d.custom1= ;execute=mv,-u,$d.get_data_full_path=,$d.custom1="
+   method.insert = d.move_to_complete, simple, "d.directory.set=$argument.1=; execute=mkdir,-p,$argument.1=; execute=mv,-u,$argument.0=,$argument.1=; d.save_full_session="
+   method.set_key = event.download.finished,move_complete,"d.move_to_complete=$d.get_data_full_path=,$d.custom1="
 
 
 Move .torrent file after loading it manually
