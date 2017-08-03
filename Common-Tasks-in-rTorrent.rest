@@ -61,7 +61,7 @@ Create symbolic links to indicate the download state
 Move completed torrents
 ------------
 
-**This is just broken, read** #625.
+**This is just broken, read [#625](/rakshasa/rtorrent/issues/625).**
 
 When the torrent finishes, it executes ``mv <base_path> ~/Download/`` and then sets the destination directory to ``~/Download/`` (using the above defined ``d.get_data_full_path`` method). 
 
