@@ -61,15 +61,14 @@ Create symbolic links to indicate the download state
 Move completed torrents
 ------------
 
-**This is just broken, read** `#625 </rakshasa/rtorrent/issues/625>`_.
-
 When the torrent finishes, it executes ``mv <base_path> ~/Download/`` and then sets the destination directory to ``~/Download/`` (using the above defined ``d.get_data_full_path`` method). 
 
 .. code-block::
 
-   # gets the full path of data of a torrent (it's a workaround for the possibly empty 'd.base_path' attribute)
+   method.insert = d.get_finished_dir, simple, "cat=~/Download/,$d.custom1="
    method.insert = d.get_data_full_path, simple, "branch=((d.is_multi_file)),((cat,(d.directory))),((cat,(d.directory),/,(d.name)))"
-   method.set_key = event.download.finished,move_complete,"execute=mv,-u,$d.get_data_full_path=,~/Download/; d.directory.set=~/Download/"
+   method.insert = d.move_to_complete, simple, "d.directory.set=$argument.1=; execute=mkdir,-p,$argument.1=; execute=mv,-u,$argument.0=,$argument.1=; d.save_full_session="
+   method.set_key = event.download.finished,move_complete,"d.move_to_complete=$d.get_data_full_path=,$d.get_finished_dir="
 
 
 Move completed torrents to different directory depending on watch directory
