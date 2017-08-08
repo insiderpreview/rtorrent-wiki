@@ -104,31 +104,31 @@ Access the XMLRPC interface using any XMLRPC-capable client. For example, using 
 
 ```
  > # To list all the xmlrpc methods rtorrent supports.
- > xmlrpc localhost system.listMethods
+ > xmlrpc localhost:8008 system.listMethods
 
  > # Get max upload rate.
- > xmlrpc localhost get_upload_rate ""
+ > xmlrpc localhost:8008 get_upload_rate ""
 
  > # Set upload rate, exact 100000 bytes.
- > xmlrpc localhost set_upload_rate "" i/100000
+ > xmlrpc localhost:8008 set_upload_rate "" i/100000
 
  > # Set upload rate, 100kb.
- > xmlrpc localhost set_upload_rate "" 100k
+ > xmlrpc localhost:8008 set_upload_rate "" 100k
 
  > # See list of downloads in "main" view
- > xmlrpc localhost download_list ""
+ > xmlrpc localhost:8008 download_list ""
 
  > # See list of downloads in "started" view
- > xmlrpc localhost download_list "" started
+ > xmlrpc localhost:8008 download_list "" started
 
  > # Get uploaded bytes for specific download by info-hash
- > xmlrpc localhost d.get_up_total e66e7012b8346271009110ac38f91bc0ad8ce281
+ > xmlrpc localhost:8008 d.get_up_total e66e7012b8346271009110ac38f91bc0ad8ce281
 
  > # Change the directory for a specific download.
- > xmlrpc localhost d.set_directory 91A2DF0C9288BC4C5D03EC8D8C26B4CF95A4DBEF foo/bar/
+ > xmlrpc localhost:8008 d.set_directory 91A2DF0C9288BC4C5D03EC8D8C26B4CF95A4DBEF foo/bar/
 
  > # Size of the first file in a specific download.
- > xmlrpc localhost f.get_size_bytes 91A2DF0C9288BC4C5D03EC8D8C26B4CF95A4DBEF:f0
+ > xmlrpc localhost:8008 f.get_size_bytes 91A2DF0C9288BC4C5D03EC8D8C26B4CF95A4DBEF:f0
 ```
 
 It supports both single strings akin to what the option file accepts, and proper xmlrpc integer, string and lists.
