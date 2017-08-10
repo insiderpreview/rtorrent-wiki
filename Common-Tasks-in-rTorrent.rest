@@ -334,3 +334,28 @@ After that, you will need to then enable and start the service:
 
     $ sudo systemctl enable rtorrent.service
     $ sudo systemctl start rtorrent.service
+
+You could also directly attach rtorrent to a tty using this service file instead:
+
+.. code-block::
+
+    [Unit]
+    Description=rtorrent daemon
+    After=network.target
+    
+    [Service]
+    Environment=TERM=screen-256color
+    User=YOUR_USER_ID_WHICH_RUNS_RTORRENT_GOES_HERE
+    ExecStart=/usr/bin/socat PTY,link=%t/rtorrent/tty EXEC:/usr/bin/rtorrent,pty,nofork
+    Type=simple
+    
+    [Install]
+    WantedBy=multi-user.target
+
+You can attach screen to this pty using:
+
+.. code-block::
+
+    screen /run/rtorrent/tty
+
+Use CTRL + a  d to detach.
