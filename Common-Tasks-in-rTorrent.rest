@@ -58,10 +58,10 @@ Create symbolic links to indicate the download state
    method.set_key = event.download.finished,link3,"d.create_link=base_filename,/files,"
 
 
-Move completed torrents
+Move completed torrents to a fixed location
 ------------
 
-When the torrent finishes, it executes ``mv <base_path> ~/Download/`` and then sets the destination directory to ``~/Download/`` (using the above defined ``d.get_data_full_path`` method). 
+When the torrent finishes, it executes ``mv <base_path> ~/Download/`` and then sets the destination directory to ``~/Download/`` (using the included ``d.get_data_full_path`` method). 
 
 .. code-block::
 
@@ -69,6 +69,26 @@ When the torrent finishes, it executes ``mv <base_path> ~/Download/`` and then s
    method.insert = d.get_data_full_path, simple, "branch=((d.is_multi_file)),((cat,(d.directory))),((cat,(d.directory),/,(d.name)))"
    method.insert = d.move_to_complete, simple, "d.directory.set=$argument.1=; execute=mkdir,-p,$argument.1=; execute=mv,-u,$argument.0=,$argument.1=; d.save_full_session="
    method.set_key = event.download.finished,move_complete,"d.move_to_complete=$d.get_data_full_path=,$d.get_finished_dir="
+
+Move completed torrents to a dynamic location
+------------
+
+The `completion-path.sh`_ script allows you to perform very versatile completion moving,
+based on logic defined in a bash script, like in this example:
+
+.. code-block:: shell
+
+    month=$(date +'%Y-%m')
+
+    test -n "$target" || case $(tr A-Z' ' a-z_ <<<"$label") in
+        tv)                     target="tv" ;;
+        movie*)                 target="movies/$month" ;;
+    esac
+
+See `Versatile Move on Completion`_ for all the details, including how to install this.
+
+.. _`completion-path.sh`: https://github.com/rtorrent-community/rtorrent-docs/blob/master/docs/examples/completion-path.sh
+.. _`Versatile Move on Completion`: https://rtorrent-docs.readthedocs.io/en/latest/use-cases.html#versatile-move
 
 
 Move completed torrents to different directory depending on watch directory
