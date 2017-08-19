@@ -230,10 +230,36 @@ Switch to a custom view with
    ui.current_view.set = viewname
 
 
-Manually setting the local IP
+Setting bind address
 --------------------
 
-Using the ``-i <ip>`` flag or ``ip = <ip>`` option, you may change your IP address that is reported to the tracker. If you have a dynamic IP address then ``schedule = ip_tick,0,1800,ip=my_address`` may be used to update the IP address every 30 minutes.
+Using the ``-b <ip>`` flag or ``bind = <ip>`` option, you may change the IP address the listening socket and outgoing connections is bound to.
+
+The following can be used to set an interface with IPv4 address (e.g. ``eth0``) to bind to. (Requires ``ip`` command that is part of ``iproute2`` package.)
+
+```ini
+# Set an interface with IPv4 address to bind to: [eth0|tun0]
+method.insert = cfg.interface.bind, string|const|private, (cat,"eth0")
+# Get IPv4 address of a given interface
+method.insert = get_interface_ipv4_address, simple|private, "execute.capture=bash,-c,\"$cat=\\\"echo -n \$(ip -o -4 addr show \\\",$argument.0=,\\\" | grep -Po 'inet \\\\\\\\\\K[\\\\\\\\\\d.]+')\\\"\""
+# The IP address the listening socket and outgoing connections is bound to. (bind)
+schedule2 = set_bind_address, 0, 0, "branch=((cfg.interface.bind)),((network.bind_address.set,(get_interface_ipv4_address,(cfg.interface.bind))))"
+```
+
+
+Setting the local IP
+--------------------
+
+Using the ``-i <ip>`` flag or ``ip = <ip>`` option, you may change your IP address that is reported to the tracker.
+
+If you have a dynamic IP address then the following can be used to update the IP address every 30 minutes without the need of having dynamic DNS service. (Requires ``dig`` command that is part of ``dnsutils`` package.)
+
+```ini
+# Get public IP address without the need of having dynamic DNS service, also works from behind NAT, through tunnel
+method.insert = get_public_ip_address, simple|private, "execute.capture=bash,-c,\"eval echo -n \$(dig TXT +short o-o.myaddr.l.google.com @ns1.google.com)\""
+# The IP address reported to the tracker. (ip) This handles dynamic IP's as well.
+schedule2 = ip_tick, 0, 1800, "network.local_address.set=(get_public_ip_address)"
+```
 
 The client may spend as much as 60 seconds trying to contact a UDP tracker, so if you are behind a firewall that blocks the reply packets you should tell the client to skip the UDP tracker. Set ``use_udp_trackers = no`` in your configuration file or in the command line option.
 
