@@ -2,25 +2,25 @@
 **Contents**
 
  * [rTorrent related settings](#rtorrent-related-settings)
-  * [Sample config entries](#sample-config-entries)
-  * [Peers and slots](#peers-and-slots)
-    * [Definitions](#definitions)
-    * [Assigning the right values](#assigning-the-right-values)
-    * [Memory impact](#memory-impact)
-  * [Max memory usage setting](#max-memory-usage-setting)
-  * [Reduce disk usage](#reduce-disk-usage)
-    * [Send and receive buffer size](#send-and-receive-buffer-size)
-    * [Preloading pieces](#preloading-pieces)
-    * [Max open files](#max-open-files)
-    * [Disk allocation](#disk-allocation)
-    * [Session save](#session-save)
-  * [DNS timeout](#dns-timeout)
+   * [Sample config entries](#sample-config-entries)
+   * [Peers and slots](#peers-and-slots)
+     * [Definitions](#definitions)
+     * [Assigning the right values](#assigning-the-right-values)
+     * [Memory impact](#memory-impact)
+   * [Max memory usage setting](#max-memory-usage-setting)
+   * [Reduce disk usage](#reduce-disk-usage)
+     * [Send and receive buffer size](#send-and-receive-buffer-size)
+     * [Preloading pieces](#preloading-pieces)
+     * [Max open files](#max-open-files)
+     * [Disk allocation](#disk-allocation)
+     * [Session save](#session-save)
+   * [Disable built-in DNS cache](#disable-built-in-dns-cache)
  * [System wide settings](#system-wide-settings)
-  * [Max open files](#max-open-files)
-  * [Networking tweaks](#networking-tweaks)
+   * [Max open files](#max-open-files)
+   * [Networking tweaks](#networking-tweaks)
  * [Name resolving enhancements](#name-resolving-enhancements)
-  * [rTrorrent with c-ares](#rtrorrent-with-c-ares)
-  * [Local DNS cache](#local-dns-cache)
+   * [rTrorrent with c-ares](#rtrorrent-with-c-ares)
+   * [Local DNS cache](#local-dns-cache)
  * [References](#references)
 
 
@@ -212,9 +212,10 @@ schedule2 = session_save, 1200, 43200, ((session.save))
 (_What is this for??? `schedule2 = prune_file_status, 3600, 86400, ((system.file_status_cache.prune))`_)
 
 
-### DNS timeout
+### Disable built-in DNS cache
 
-Along with [Name resolving enhancements](#name-resolving-enhancements) we can reduce http DNS cache timeout with `network.http.dns_cache_timeout`. Since we set it in [Networking tweaks](#networking-tweaks) to `30`, let's lower it to `25`. Default is `60` sec.
+Along with [Name resolving enhancements](#name-resolving-enhancements) we can disable the built-in DNS cache of `curl` 
+ in favor of an external one with `network.http.dns_cache_timeout.set=0`. Default is `60` sec.
 
 
 ## System wide settings
