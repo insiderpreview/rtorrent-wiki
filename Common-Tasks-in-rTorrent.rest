@@ -106,6 +106,16 @@ Each watch directory adds torrents with the final destination stored in the ``cu
    method.set_key = event.download.finished,move_complete,"d.move_to_complete=$d.get_data_full_path=,$d.custom1="
 
 
+Delayed Completion Handling
+------------
+
+`Delayed Completion Handling`_ (click for details) shows how to add a new ``event.download.finished_delayed`` trigger that works like the normal finished event, but only fires after a customizable delay.
+
+One use-case for such a thing is to move a download from fast storage (RAM disk, SSD) to slow storage (HDD) for permanent seeding, after the initial rush in a swarm is over.
+
+.. _`Delayed Completion Handling`: https://rtorrent-docs.readthedocs.io/en/latest/use-cases.html#delayed-completion-handling
+
+
 Move .torrent file after loading it manually
 ------------
 
