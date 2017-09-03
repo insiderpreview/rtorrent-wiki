@@ -4,23 +4,34 @@ Watch Directories
 Introduction
 ------------
 
-Using various ways rTorrent can start, stop and delete downloads as torrent files are added or removed from a watch directory.
+To load torrent files dropped into special folders (by direct download, DropBox, ``scp``, ``sshfs``, and so on),
+you can extend your configuration with scheduled checks trying to load new files from these folders.
 
 Scheduled Task
 --------------
 
-```
-schedule = watch_directory_foo, 20, 10, "load.start=~/watch_foo/*.torrent"
-schedule = watch_directory_bar, 21, 10, "load.normal=~/watch_bar/*.torrent"
-schedule = watch_directory_baz, 22, 10, "load.normal=~/watch_baz/*.torrent,d.directory.set=~/baz/"
+These examples load items from different directories, in started state or idle.
+The 3rd example shows how to set a non-default download path, using a post-load command.
+
+```ini
+schedule = watch_directory_foo, 20, 10, "load.start_verbose=~/watch_foo/*.torrent"
+schedule = watch_directory_bar, 21, 10, "load.verbose=~/watch_bar/*.torrent"
+schedule = watch_directory_baz, 22, 10, "load.verbose=~/watch_baz/*.torrent,d.directory.set=~/baz/"
 ```
 
-The simplest and most portable way to start downloads is through scheduling a task for regular execution.
+The used *verbose* load commands log any problems to the console.
+Be aware though that half-written files can lead to spurious warnings,
+especially of your schedules have an interval like only 1 second.
+Use the ``load.start`` or ``load.normal`` commands instead 
+if you do *not* want any diagnostics.
+
+Also note that the start times are incremental, to spread the load caused by scanning the watch directories.
+
 
 Tied Files
 ----------
 
-```
+```ini
 # Either use this…
 schedule = tied_directory, 10, 10, start_tied=
 schedule = untied_directory, 10, 10, stop_untied=
