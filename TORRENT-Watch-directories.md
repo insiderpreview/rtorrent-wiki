@@ -14,9 +14,9 @@ These examples load items from different directories, in started state or idle.
 The 3rd example shows how to set a non-default download path, using a post-load command.
 
 ```ini
-schedule = watch_directory_foo, 20, 10, "load.start_verbose=~/watch_foo/*.torrent"
-schedule = watch_directory_bar, 21, 10, "load.verbose=~/watch_bar/*.torrent"
-schedule = watch_directory_baz, 22, 10, "load.verbose=~/watch_baz/*.torrent,d.directory.set=~/baz/"
+schedule2 = watch_directory_foo, 20, 10, "load.start_verbose=~/watch_foo/*.torrent"
+schedule2 = watch_directory_bar, 21, 10, "load.verbose=~/watch_bar/*.torrent"
+schedule2 = watch_directory_baz, 22, 10, "load.verbose=~/watch_baz/*.torrent,d.directory.set=~/baz/"
 ```
 
 The used *verbose* load commands log any problems to the console.
@@ -33,12 +33,12 @@ Tied Files
 
 ```ini
 # Either use this…
-schedule = tied_directory, 10, 10, start_tied=
-schedule = untied_directory, 10, 10, stop_untied=
+schedule2 = tied_directory, 10, 10, start_tied=
+schedule2 = untied_directory, 10, 10, stop_untied=
 
 # OR one of these, the combination does not make sense
-schedule = untied_directory, 10, 10, close_untied=
-schedule = untied_directory, 10, 10, remove_untied=
+schedule2 = untied_directory, 10, 10, close_untied=
+schedule2 = untied_directory, 10, 10, remove_untied=
 ```
 
 When a download is created the torrent file's original path is associated with the download. When the commands '*_untied' are called the respective actions (stop, close, remove) are called for downloads if their original torrent file is not found.
