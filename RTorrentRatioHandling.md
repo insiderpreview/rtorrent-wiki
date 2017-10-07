@@ -18,7 +18,7 @@ ratio.max.set=300
 ratio.upload.set=20M
 
 # Changing the command triggered when the ratio is reached.
-system.method.set = group.seeding.ratio.command, d.close=, d.erase=
+method.set = group.seeding.ratio.command, "d.close= ; d.erase="
 ```
 
 # The basics
