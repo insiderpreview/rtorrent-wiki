@@ -18,6 +18,7 @@ ratio.max.set=300
 ratio.upload.set=20M
 
 # Changing the command triggered when the ratio is reached.
+# (the default is "d.try_close= ; d.ignore_commands.set=1")
 method.set = group.seeding.ratio.command, "d.close= ; d.erase="
 ```
 
