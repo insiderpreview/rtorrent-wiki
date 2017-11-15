@@ -100,7 +100,7 @@ execute.nothrow = bash, -c, (cat, "echo >",\
 
 # Other operational settings (check & adapt)
 encoding.add = utf8
-system.umask.set = 0027 # This is inverted to usual unix permissions, the example provided is for permissions of 750
+system.umask.set = 0027
 system.cwd.set = (directory.default)
 network.http.dns_cache_timeout.set = 25
 ##network.http.capath.set = "/etc/ssl/certs"
