@@ -355,6 +355,7 @@ All you need to have these settings in the config to be able to handle public to
   * UDP port for DHT
 
 * don't forget to open / port forward the required ports / protocols in your firewall
+* magnet links doesn't work due to a bug if only encrypted connection is set! (e.g. ``protocol.encryption.set = require,require_RC4``)
 * session directory must be defined for DHT to work !
 * it's strongly advised to use `local DNS cache <https://github.com/rakshasa/rtorrent/wiki/Performance-Tuning#local-dns-cache>`_
 
