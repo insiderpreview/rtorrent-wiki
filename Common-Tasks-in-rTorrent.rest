@@ -344,6 +344,48 @@ Note that this script requires the ``Convert::Bencode_XS`` module from CPAN, if 
 If you're having trouble installing it on newer perl versions then take a look at the first comment of `this issue <https://github.com/rakshasa/rtorrent/issues/489>`_.
 
 
+Supporting public torrents (magnet links, UDP trackers, DHT)
+------------
+
+All you need to have these settings in the config to be able to handle public torrents - including magnet links, UDP trackers and `DHT <https://github.com/rakshasa/rtorrent/wiki/Using-DHT>`_:
+
+* change the 2 port settings to your liking
+
+  * TCP/UDP port for tracker communication
+  * UDP port for DHT
+
+* don't forget to open / port forward the required ports / protocols in your firewall
+* session directory must be defined for DHT to work !
+* it's strongly advised to use `local DNS cache <https://github.com/rakshasa/rtorrent/wiki/Performance-Tuning#local-dns-cache>`_
+
+```ini
+# Port range to use for listening. (port_range)
+network.port_range.set = 62820-62820
+
+# Enable/disable peer exchange for torrents that aren't marked private. Disabled by default. (peer_exchange)
+protocol.pex.set = 1
+
+# Set whether the client should try to connect to UDP trackers (It can cause various problems if it's enabled, if you experience any with this option enabled then disable it.)
+trackers.use_udp.set = 1
+
+# Enable DHT support for trackerless torrents or when all trackers are down. 
+# May be set to "disable" (completely disable DHT), "off" (do not start DHT),
+# "auto" (start and stop DHT as needed), or "on" (start DHT immediately).
+# The default is "off".
+# For DHT to work, a session directory must be defined.
+dht.mode.set = auto
+
+# UDP port to use for DHT
+dht.port.set = 62882
+
+# Adding public DHT servers for easy bootstrapping
+schedule2 = dht_node_1, 5, 0, "dht.add_node=router.utorrent.com:6881"
+schedule2 = dht_node_2, 5, 0, "dht.add_node=dht.transmissionbt.com:6881"
+schedule2 = dht_node_3, 5, 0, "dht.add_node=router.bitcomet.com:6881"
+schedule2 = dht_node_4, 5, 0, "dht.add_node=dht.aelitis.com:6881"
+```
+
+
 Starting rTorrent on System Startup
 ------------
 
