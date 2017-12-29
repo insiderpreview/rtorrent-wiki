@@ -260,22 +260,22 @@ Example entry:
 
 **C/RE/LO**  
 C  = Connection type, can be r, l, R or L.
-&nbsp;&nbsp;&nbsp;&nbsp;r = Started remotely, the peer initiated the connection to your client.  
-&nbsp;&nbsp;&nbsp;&nbsp;l = Started locally, your client initiated the connection to the peer.  
-&nbsp;&nbsp;&nbsp;&nbsp;R = Started remotely, using encrypted data transfer.  
-&nbsp;&nbsp;&nbsp;&nbsp;L = Started locally, using encrypted data transfer.
+* r = Started remotely, the peer initiated the connection to your client.  
+* l = Started locally, your client initiated the connection to the peer.  
+* R = Started remotely, using encrypted data transfer.  
+* L = Started locally, using encrypted data transfer.
 
 RE = Remote client information, has two parts; the first is u or c and the second is i or n.  
-&nbsp;&nbsp;&nbsp;&nbsp;c = This peer has choked your client (which means it is not going to send you any pieces for now).  
-&nbsp;&nbsp;&nbsp;&nbsp;u = Your client is not choked by this peer (unchoked).  
-&nbsp;&nbsp;&nbsp;&nbsp;i = This peer is interested in downloading from your client.  
-&nbsp;&nbsp;&nbsp;&nbsp;n = This peer is not interested in downloading from your client. 
+* c = This peer has choked your client (which means it is not going to send you any pieces for now).  
+* u = Your client is not choked by this peer (unchoked).  
+* i = This peer is interested in downloading from your client.  
+* n = This peer is not interested in downloading from your client. 
 
-&nbsp;&nbsp;&nbsp;&nbsp;LO = Local client information, has two parts; the first is u or c and the second is i or n.  
-&nbsp;&nbsp;&nbsp;&nbsp;c = Your client has choked this peer (which means it is not going to send this peer any pieces for now).  
-&nbsp;&nbsp;&nbsp;&nbsp;u = Your client is not choking the peer (unchoked).  
-&nbsp;&nbsp;&nbsp;&nbsp;i = Your client is interested in downloading from this peer.  
-&nbsp;&nbsp;&nbsp;&nbsp;n = Your client is not interested in downloading from this peer.
+LO = Local client information, has two parts; the first is u or c and the second is i or n.  
+* c = Your client has choked this peer (which means it is not going to send this peer any pieces for now).  
+* u = Your client is not choking the peer (unchoked).  
+* i = Your client is interested in downloading from this peer.  
+* n = Your client is not interested in downloading from this peer.
 
 **QS**  
 Queues Outoing/Incoming pieces.  
@@ -291,7 +291,7 @@ The number of the piece that is currently on the top of the request queue.
 **SNUB**  
 This field has a * in it when your client is snubbing this peer. When a peer agrees to send you a piece you have requested and then does not send that piece within a certain time your client will snub this peer. It is basically a way for the client to flag that this peer is unreliable and it is better to request pieces from other clients.
 
-###Status###
+### Status ###
 
 A status line in this screen lists information such as:
 ```
@@ -307,7 +307,7 @@ Peers: 99(1002) Min/Max: 40/100 Uploads: 15 U/I/C/A: 3/71/5/3 Unchoked: 2/1 Fail
      Maximum number of peers to upload to at the same time (given the global upload slots are available). Can be toyed with keys 1 and 2.
 
 **U/I/C/A**  
-U = Number of corrently unchoked peers  
+U = Number of currently unchoked peers  
 I = Currently interested peers  
 C = Complete peers  
 A = Peers accounted  
