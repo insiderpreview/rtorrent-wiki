@@ -259,7 +259,7 @@ net.ipv4.tcp_fin_timeout = 30
 
 `rTorrent` sometimes can hang on hostname lookups, even with normal http/https requests. Here it is what we can do about it.
 
-### rTrorrent with c-ares
+### rTorrent with c-ares
 
 `c-ares` is a C library for asynchronous DNS requests (including name resolves). [Here](http://web.archive.org/web/20140727040445/http://filesharefreak.com/tutorials/rtorrent-libtorrent-installing-on-linux) you can find instructions how to compile it or just simply use [rtorrent-ps](https://github.com/pyroscope/rtorrent-ps) by @pyroscope, its build script will do everything you need.
 
