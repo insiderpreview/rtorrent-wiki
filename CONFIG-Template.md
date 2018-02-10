@@ -23,7 +23,7 @@ Use these commands to get a copy of the template to your disk and create the dir
 
 ```sh
 curl -Ls "https://raw.githubusercontent.com/wiki/rakshasa/rtorrent/CONFIG-Template.md" \
-    | grep -A9999 '^######' | grep -B9999 '^### END' \
+    | sed -ne '/^######/,/^### END/p' \
     | sed -re "s:/home/USERNAME:$HOME:" >~/.rtorrent.rc
 mkdir ~/rtorrent
 ```
