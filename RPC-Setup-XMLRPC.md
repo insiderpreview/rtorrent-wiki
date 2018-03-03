@@ -1,5 +1,12 @@
 # Using XMLRPC with rTorrent
 
+## TODOs for this page
+ * Security review of all the webserver config snippets (specifically nginx)
+ * Use non-deprecated commands
+ * Take out all the "you could" stuff that only confuses people (less options is more)
+
+## Configuring rtorrent and your webserver
+
 What you need:
 
 * http://python.ca/scgi/ for Apache 2.2, mod_proxy_scgi enabled for Apache 2.4, Lighttpd should have this built-in.
@@ -96,7 +103,7 @@ encoding_list = UTF-8
 
 The web server will now route xmlrpc requests to rtorrent, which is listening only on connections from the local machine or on the local socket file. Also make sure the /RPC2 location is properly protected, and also name it differently to evade attackers probing for vulnerabilities.
 
-:bangbang: **Never** bind the SCGI port to anythin g *but* 127.0.0.1. Anyone who can send rtorrent xmlrpc commands does have the ability to execute code with the privileges of the user running rtorrent. If you ewant to be more secure on principle, use UNIX domain sockets instead of TCP ports (see below).
+:bangbang: **Never** bind the SCGI port to anything *but* 127.0.0.1. Anyone who can send rtorrent xmlrpc commands does have the ability to execute code with the privileges of the user running rtorrent. If you want to be more secure on principle, use UNIX domain sockets instead of TCP ports (see below).
 
 You may also use `scgi_local = /foo/bar` to create a local domain socket, which supports file permissions. Set the rw permissions of the directory the socket will reside in to only allow the necessary processes. This is the recommended way of using XMLRPC with rtorrent, though not all http servers support local domain sockets for scgi.
 
