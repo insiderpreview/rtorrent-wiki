@@ -20,7 +20,7 @@ ProxyPass /RPC2 scgi://127.0.0.1:5000
 
 **rtorrent.rc**:
 ```ini
-scgi_port = localhost:5000
+scgi_port = 127.0.0.1:5000
 ```
 
 ### Lighttpd:
@@ -54,10 +54,12 @@ scgi.server = (
 
 **rtorrent.rc**:
 ```ini
-scgi_port = localhost:5000
+scgi_port = 127.0.0.1:5000
 ```
 
 **nginx.conf**:
+
+***INSECURE CONFIG, DO NOT USE!***
 ```
 location /RPC2 {
   scgi_pass   127.0.0.1:5000;
@@ -92,9 +94,9 @@ If any of your downloads have non-ascii characters in the filenames, you must al
 encoding_list = UTF-8
 ```
 
-The web server will now route xmlrpc requests to rtorrent, which is listening only on connections from the local machine or on the local socket file. Also make sure the /RPC2 location is properly protected.
+The web server will now route xmlrpc requests to rtorrent, which is listening only on connections from the local machine or on the local socket file. Also make sure the /RPC2 location is properly protected, and also name it differently to evade attackers probing for vulnerabilities.
 
-To make it accessible from anywhere, use `scgi_port = :5000`. This is however not recommend as rtorrent has no access control, which means the http server is responsible for handling that. Anyone who can send rtorrent xmlrpc commands is likely to have the ability to execute code with the privileges of the user running rtorrent.
+:bangbang: **Never** bind the SCGI port to anythin g *but* 127.0.0.1. Anyone who can send rtorrent xmlrpc commands does have the ability to execute code with the privileges of the user running rtorrent. If you ewant to be more secure on principle, use UNIX domain sockets instead of TCP ports (see below).
 
 You may also use `scgi_local = /foo/bar` to create a local domain socket, which supports file permissions. Set the rw permissions of the directory the socket will reside in to only allow the necessary processes. This is the recommended way of using XMLRPC with rtorrent, though not all http servers support local domain sockets for scgi.
 
