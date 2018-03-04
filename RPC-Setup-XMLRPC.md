@@ -3,6 +3,7 @@
 ## TODOs for this page
  * Security review of all the webserver config snippets (specifically nginx)
  * Use non-deprecated commands
+ * Use domain sockets, and only mention TCP in a warning
  * Take out all the "you could" stuff that only confuses people (less options is more)
 
 ## Configuring rtorrent and your webserver
